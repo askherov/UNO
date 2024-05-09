@@ -1,9 +1,9 @@
 import random
 
-# 1 kard clasi
-# 2 player calsi
-# 3 deste calsi
-# 4 oyun mentiqi clasi
+# 1 Card clasi
+# 2 Deck clasi
+# 3 Player clasi
+# 4 oyunu oynamaq mentiqi clasi yazmaq
 
 class Card:
     def __init__(self,color,number) -> None:
@@ -61,7 +61,8 @@ class Game:
     def check(self, kart,current_card):
         if kart.color == self.current_card.color or kart.number == self.current_card.number:
             return True
-        else: return False
+        else:
+            return False
 
     def play(self):
         self.deck.deck_shuffle()
