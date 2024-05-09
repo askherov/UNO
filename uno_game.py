@@ -5,9 +5,6 @@ import random
 # 3 deste calsi
 # 4 oyun mentiqi clasi
 
-
-
-
 class Card:
     def __init__(self,color,number) -> None:
         self.color = color
@@ -72,7 +69,7 @@ class Game:
         self.current_card = self.deck.cards.pop()
         while True:
             print(self.current_card.color,self.current_card.number)
-            print(f"{self.players[self.index].name} sırasıdır !")
+            print(f"{self.players[self.index].name}in sırasıdır !")
             self.players[self.index].show_hand()
             while True:
                 choise = int(input("Enter card number (0 is draw a card): "))
