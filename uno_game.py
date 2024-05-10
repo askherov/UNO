@@ -57,11 +57,11 @@ class Game:
         return False
 
     def play(self):
-        players_index = self.players[self.index]
         self.deck.deck_shuffle()
         self.start_game()
         self.current_card = self.deck.cards.pop()
         while True:
+            players_index = self.players[self.index]
             print(self.current_card.color,self.current_card.number)
             print(f"{players_index.name}")
             players_index.show_hand()
