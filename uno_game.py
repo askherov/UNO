@@ -4,6 +4,9 @@ import random
 # 2 Deck clasi
 # 3 Player clasi
 # 4 oyunu oynamaq mentiqi clasi yazmaq
+COLORS = ["Red", "Yellow", "Blue", "Green"]
+NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']#,'Reverse', 'Skip', 'Draw Two'
+
 
 class Card:
     def __init__(self,color,number) -> None:
@@ -12,22 +15,11 @@ class Card:
 
 class CardDeck:
     def __init__(self) -> None:
-        self.colors = ["Qırmızı", "Sarı", "Mavi", "Yaşıl"]
-        self.numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']#,'Reverse', 'Skip', 'Draw Two'
-        self.cards = [Card(color, number) for color in self.colors for number in self.numbers]
-    """
-    Kartlari qarışdırmaq funksiyası:
-    Parametrlər : None
-    Return : None
-    """
+       self.cards = [Card(color, number) for color in COLORS for number in NUMBERS]
+
     def deck_shuffle(self):
         random.shuffle(self.cards)
 
-    """
-    Ilk karti secmek:
-    Parametrlər : None
-    Return : kart
-    """
     def first_card(self, ):
         return self.cards.pop()
    
@@ -58,11 +50,10 @@ class Game:
         for player in self.players:
             player.draw(self.deck, 7)
 
-    def check(self, kart,current_card):
-        if kart.color == self.current_card.color or kart.number == self.current_card.number:
+    def check(self, card,current_card):
+        if card.color == self.current_card.color or card.number == self.current_card.number:
             return True
-        else:
-            return False
+        return False
 
     def play(self):
         self.deck.deck_shuffle()
@@ -70,10 +61,11 @@ class Game:
         self.current_card = self.deck.cards.pop()
         while True:
             print(self.current_card.color,self.current_card.number)
-            print(f"{self.players[self.index].name}in sırasıdır !")
+            print(f"{self.players[self.index].name}")
             self.players[self.index].show_hand()
             while True:
                 choise = int(input("Enter card number (0 is draw a card): "))
+                
                 if choise==0:
                     self.players[self.index].draw(self.deck)
                     self.players[self.index].show_hand()
