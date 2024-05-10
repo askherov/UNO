@@ -57,30 +57,31 @@ class Game:
         return False
 
     def play(self):
+        players_index = self.players[self.index]
         self.deck.deck_shuffle()
         self.start_game()
         self.current_card = self.deck.cards.pop()
         while True:
             print(self.current_card.color,self.current_card.number)
-            print(f"{self.players[self.index].name}")
-            self.players[self.index].show_hand()
+            print(f"{players_index.name}")
+            players_index.show_hand()
             while True:
                 choise = int(input("Enter card number (0 is draw a card): "))
                 
                 if choise==0:
-                    self.players[self.index].draw(self.deck)
-                    self.players[self.index].show_hand()
+                    players_index.draw(self.deck)
+                    players_index.show_hand()
                     continue
-                elif self.check(self.players[self.index].hand[choise-1],self.current_card):
-                    self.current_card= self.players[self.index].hand[choise-1]
-                    del self.players[self.index].hand[choise-1]
+                elif self.check(players_index.hand[choise-1],self.current_card):
+                    self.current_card= players_index.hand[choise-1]
+                    del players_index.hand[choise-1]
                     break
                 else:
                     print("You can't play this card! Please choose another card")
                     print(f"Curent card: {self.current_card.color, self.current_card.number}")
 
-            if len(self.players[self.index].hand) == 0:
-                print(f'{self.players[self.index]} Win game !')
+            if len(players_index.hand) == 0:
+                print(f'{players_index} Win game !')
                 break
             self.next_player()
 
