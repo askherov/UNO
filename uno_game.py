@@ -1,9 +1,10 @@
 import random
 
-# 1 Card clasi
-# 2 Deck clasi
-# 3 Player clasi
-# 4 oyunu oynamaq mentiqi clasi yazmaq
+# 1 Card class
+# 2 Deck class
+# 3 Player class
+# 4 Game class
+
 COLORS = ["Red", "Yellow", "Blue", "Green"]
 NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']#,'Reverse', 'Skip', 'Draw Two'
 
